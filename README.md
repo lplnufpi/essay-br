@@ -4,6 +4,23 @@ This repository is an extended version of the Essay-BR corpus detailed [here](ht
 It contains essays written by high school Brazilian students. 
 These essays were graded by humans professionals following the criteria of the ENEM exam.
 
+## Reference
+
+```
+@article{marinho-et-al-22,
+  author = {Jeziel Marinho and Rafael Anchiêta and Raimundo Moura},
+  title = {Essay-BR: a Brazilian Corpus to Automatic Essay Scoring Task},
+  journal = {Journal of Information and Data Management},
+  year = {2022},
+  volume = {13}
+  number = {1},
+  pages = {65--76},
+  publisher = {Sociedade Brasileira de Computação},
+  doi = {10.5753/jidm.2022.2340},
+  url = {https://sol.sbc.org.br/journals/index.php/jidm/article/view/2340}
+}
+```
+
 ## Requirements
 
 - Python (version 3.6 or later)
