@@ -34,7 +34,7 @@ class Corpus:
         Reads the splits of the corpus
         :return: training, development, and testing
         """
-        path = 'splits'
+        path = 'extended-corpus/splits'
         if split:
             return pd.read_csv(os.path.join(path, split), converters={'essay': eval, 'competence': eval})
         else:
@@ -56,8 +56,12 @@ class Corpus:
         :param df_input: content of the splits as a data frame
         :return:
         """
-        df_input.to_csv('splits/'+name+'.csv', index=False, header=True)
-        logger.info(name + '.csv saved in essays-br/splits/')
+        path = 'extended-corpus/splits/'
+        if not os.path.exists(path):
+            os.mkdir(path)
+        df_input.to_csv(os.path.join(path, name+'.csv'), index=False, header=True)
+        # df_input.to_csv('splits/'+name+'.csv', index=False, header=True)
+        logger.info(name + '.csv saved in ' + path)
 
 
 def split_stratified_into_train_val_test(df_input, stratify_colname='y', frac_train=0.7, frac_val=0.15, frac_test=0.15,
@@ -114,7 +118,7 @@ def split_stratified_into_train_val_test(df_input, stratify_colname='y', frac_tr
 
 
 if __name__ == '__main__':
-    c = Corpus()  # .build_corpus('extended_essay-br.csv')
-    train, valid, test = c.read_splits()
+    Corpus().build_corpus('extended_essay-br.csv')
+    train, valid, test = Corpus().read_splits()
     print(test.head())
     # print(test.loc[1:5, ['essay', 'competence']])
